@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网抑云</title>
+    <link rel="shortcut icon" href="#" />
+    <style>
+        body {
+            background: linear-gradient(90deg,
+                    rgba(247, 104, 69, 0.2),
+                    rgba(247, 164, 10, 0.2),
+                    rgba(240, 236, 9, 0.2),
+                    rgba(10, 247, 10, 0.2),
+                    rgba(14, 213, 248, 0.2),
+                    rgba(18, 22, 245, 0.2),
+                    rgba(231, 15, 203, 0.2));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .contanier {
+            width: 60%;
+            height: 500px;
+            margin: 100px auto;
+            border: 1px solid rgb(181, 136, 79);
+            background-color: rgb(236, 225, 209);
+            z-index: 10;
+        }
+
+        #title {
+            color: deeppink;
+            font-size: 45px;
+            margin-top: 0px;
+            margin-left: 42%;
+            z-index: 10;
+        }
+
+        #juli {
+            margin-left: 3%;
+        }
+
+        @-webkit-keyframes rotation {
+            from {
+                -webkit-transform: rotate(0deg);
+            }
+
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        img {
+            margin-left: 5%;
+            border-radius: 100%;
+            border-style: outset;
+            border-width: 4px;
+            border-color: red;
+            animation: rotation 60s linear infinite;
+            -moz-animation: rotation3s linear infinite;
+            -webkit-animation: rotation 60s linear infinite;
+            -o-animation: rotation 60s linear infinite;
+            animation-play-state: running;
+        }
+
+        #name {
+            color: deeppink;
+            float: left;
+            margin-top: -220px;
+            margin-left: 12px;
+            width: 300px;
+            height: 50px;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        audio {
+            float: left;
+            margin-top: -150px;
+            margin-left: 20px;
+            width: 300px;
+            height: 50px;
+        }
+
+        .left_top {
+            margin: 50px;
+        }
+
+        #btn {
+            float: left;
+            margin-top: -80px;
+            margin-left: 30px;
+        }
+
+        button {
+            color: white;
+            font-size: 16px;
+            background-color: deepskyblue;
+            width: 60px;
+            height: 45px;
+            margin-left: 18px;
+            z-index: 10;
+            border-radius: 25%;
+        }
+
+        button:hover {
+            color: black;
+            background-color: hotpink;
+        }
+
+        button:active {
+            color: black;
+            background-color: darkorchid;
+        }
+
+        .lyric_area {
+            height: 448px;
+            overflow: hidden;
+            margin-top: -265px;
+            float: left;
+            margin-left: 550px;
+        }
+
+        #lyric {
+            color: black;
+            font-size: 20px;
+            line-height: 40px;
+            transition-duration: 600ms;
+        }
+
+        #lyric .lineHigh {
+            color: white;
+            background-color: deepskyblue;
+        }
+
+        .xuange {
+            font-size: 24px;
+            width: 350px;
+            height: 32px;
+            position: absolute;
+            left: 325px;
+            text-align: center;
+            color: black;
+            z-index: 50;
+            top: 172px;
+        }
+
+        .xuange:hover {
+            color: blue;
+        }
+
+        .xg-ul {
+            position: absolute;
+            width: 400px;
+            height: 450px;
+            top: 200px;
+            left: 310px;
+            background-color: rgb(236, 225, 209);
+            text-align: center;
+            z-index: 50;
+        }
+
+        .xg-ul li {
+            display: inline-block;
+            width: 100%;
+            margin: 1px;
+            font-size: 25px;
+            line-height: 30px;
+            color: purple;
+            margin-top: 30px;
+            margin-left: -20px;
+        }
+
+        .xg-ul li:hover {
+            color: red;
+        }
+
+        hr {
+            transform: rotate(90deg);
+            height: 3px;
+            float: right;
+            margin-top: -248px;
+            margin-right: 210px;
+            z-index: 100;
+        }
+
+        #testinput {
+            background-color: pink;
+            color: purple;
+            font-size: 25px;
+            width: 365px;
+            height: 40px;
+            z-index: 100;
+            float: left;
+            margin-left: 757px;
+            margin-top: 100px;
+            border: 3px;
+            border-style: solid;
+            border-color: red;
+            letter-spacing :3px; 
+        }
+    
+        #qued {
+            background-color: palevioletred;
+            color: black;
+            text-align: center;
+            width: 88px;
+            height: 46px;
+            font-size: 20px;
+            z-index: 100;
+            float: left;
+            margin-top: 100px;
+            border-radius: 0;
+            border-style: solid;
+            border-color: red;
+            margin-left: -1px;
+        
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <h2 id="title">网抑云音乐</h2>
+        <input type="text" name="fname" id="testinput">
+        <button onclick="getinput()" id="qued">确定</button>
+        <div class="xuange">歌单列表</div>
+        <div class="xg-ul">
+            <ul>
+                <li>目及皆是你</li>
+                <li>大鱼 </li>
+                <li>念无痕 </li>
+                <li>可能否 </li>
+                <li>梦与星海之间 </li>
+                <li>千千万万 </li>
+            </ul>
+        </div>
+        <div class="contanier">
+            <div class="left_top">
+                <img src="../assets/目及皆是你.mp3" width="200px" height="200px" id="pic">
+            </div>
+            <div class="lyric_area">
+                <li style="list-style-type:none;" id="lyric"></li>
+
+                <textarea id="gec1" cols="30" style="display: none">
+                    [00:00.00]目及皆是你 - 蓝心羽
+                    [00:00.06]词 Lyrics：至遥/祝何
+                    [00:00.12]曲 Music：祝何
+                    [00:22.44]玻璃上的雾气 我临摹一个你
+                    [00:26.69]穿透风景坠入你的眼睛
+                    [00:30.74]离地心几英里 我温暖包裹你
+                    [00:34.96]在赤道以北的季节说爱情
+                    [00:39.61]等霜雪落满地 风吹暖暖四季
+                    [00:43.93]等地球忙着自转照耀你
+                    [00:47.24]我栖息的星系 有微光折射你
+                    [00:51.75]是我逃离引力设下相遇伏笔
+                    [00:57.39]我戒不掉你 像戒不了呼吸
+                    [01:01.98]漫长的距离 我用思念来代替
+                    [01:06.24]这寂静星系 浪漫是你
+                    [01:10.52]一生的探秘 只想被你吸引
+                    [01:14.93]你就像氧气 没你不能呼吸
+                    [01:19.30]我波澜四起 心动好几个世纪
+                    [01:23.75]手写的结局 用幸福延续
+                    [01:28.03]我的心 温柔的给你
+                    [01:32.16]Baby I love you
+                    [01:51.93]等霜雪落满地 风吹暖暖四季
+                    [01:55.94]等地球忙着自转照耀你
+                    [01:59.26]我栖息的星系 有微光折射你
+                    [02:03.70]是我逃离引力设下相遇伏笔
+                    [02:09.67]我戒不掉你 像戒不了呼吸
+                    [02:13.94]漫长的距离 我用思念来代替
+                    [02:18.19]这寂静星系 浪漫是你
+                    [02:22.65]一生的探秘 只想被你吸引
+                    [02:26.96]你就像氧气 没你不能呼吸
+                    [02:31.41]我波澜四起 心动好几个世纪
+                    [02:35.73]手写的结局 用幸福延续
+                    [02:40.05]我的心 温柔的给你
+                    [02:44.26]Baby I love you
+                    [02:48.75]我戒不掉你 像戒不了呼吸
+                    [02:53.18]漫长的距离 我用思念来代替
+                    [02:57.67]这寂静星系 浪漫是你
+                    [03:01.87]一生的探秘 只想被你吸引
+                    [03:06.34]你就像氧气 像戒不了呼吸
+                    [03:10.61]我波澜四起 心动好几个世纪
+                    [03:15.02]手写的结局 用幸福延续
+                    [03:19.25]我的心 温柔的给你
+                    [03:23.79]Baby I love you
+                 </textarea>
+
+
+                <textarea id="gec2" cols="30" style="display: none">
+                    [00:00.00]大鱼  -  周深
+                    [00:04.06]词：尹约
+                    [00:06.08]曲：钱雷 
+                    [00:42.86]海浪无声将夜幕深深淹没
+                    [00:49.63]漫过天空尽头的角落
+                    [00:56.34]大鱼在梦境的缝隙里游过
+                    [01:03.35]凝望你沉睡的轮廓
+                    [01:09.39]看海天一色 听风起雨落
+                    [01:16.09]执子手吹散苍茫茫烟波
+                    [01:23.03]大鱼的翅膀 已经太辽阔
+                    [01:30.75]我松开时间的绳索
+                    [01:36.82]怕你飞远去 怕你离我而去
+                    [01:43.50]更怕你永远停留在这里
+                    [01:50.50]每一滴泪水 都向你流淌去
+                    [01:58.21]倒流进天空的海底
+                    [02:18.70]海浪无声将夜幕深深淹没
+                    [02:25.63]漫过天空尽头的角落
+                    [02:32.40]大鱼在梦境的缝隙里游过
+                    [02:39.20]凝望你沉睡的轮廓
+                    [02:45.36]看海天一色 听风起雨落
+                    [02:52.10]执子手吹散苍茫茫烟波
+                    [02:59.05]大鱼的翅膀 已经太辽阔
+                    [03:06.78]我松开时间的绳索
+                    [03:12.67]看你飞远去 看你离我而去
+                    [03:19.52]原来你生来就属于天际
+                    [03:26.46]每一滴泪水 都向你流淌去
+                    [03:34.15]倒流回最初的相遇
+                    [03:40.07]</textarea>
+
+                <textarea id="gec3" cols="30" style="display: none">
+                    [00:00.00]念无痕 
+                    [00:00.06]词 Lyrics：至遥/祝何
+                    [00:00.12]曲 Music：祝何
+                    [00:17.42]细雨绵绵的春
+                    [00:19.45]淋湿了树的根
+                    [00:21.54]或许就是缘分
+                    [00:23.22]遇见你的情深
+                    [00:24.87]弹你送的古筝琴弦却又断了几根
+                    [00:28.07]该怎么确认你是我想要的一生
+                    [00:32.93]莺飞草长的城
+                    [00:34.62]明媚了花的芬
+                    [00:36.45]一眼确定终身
+                    [00:38.40]是否太过愚笨
+                    [00:40.25]我借你的永恒有没有要想过要认真
+                    [00:43.60]我借你的山盟却一点点尘封
+                    [00:47.00]我撑起了细雨思念在伞下一路跟
+                    [00:51.00]前面的书生你能不能等一等
+                    [00:54.21]坠落的涟漪一圈一圈却无声
+                    [00:58.17]画面 渐渐 浅浅 平静后无痕
+                    [01:02.06]我牵起微风思念却比黄花瘦
+                    [01:06.15]孤单地等候古道边的马念旧
+                    [01:09.46]月下的身影倒映在这湖心中
+                    [01:13.61]沉默 落寞 许久 它悄悄把泪流
+                    [01:32.49]细雨绵绵的春
+                    [01:34.13]淋湿了树的根
+                    [01:36.17]或许就是缘分
+                    [01:38.00]遇见你的情深
+                    [01:40.00]弹你送的古筝琴弦却又断了几根
+                    [01:43.19]该怎么确认你是我想要的一生
+                    [01:47.45]莺飞草长的城
+                    [01:49.31]明媚了花的芬
+                    [01:51.00]一眼确定终身
+                    [01:53.00]是否太过愚笨
+                    [01:54.70]我借你的永恒有没有要想过要认真
+                    [01:59.00]我借你的山盟却一点点尘封
+                    [02:02.00]我撑起了细雨思念在伞下一路跟
+                    [02:06.00]前面的书生你能不能等一等
+                    [02:09.70]坠落的涟漪一圈一圈却无声
+                    [02:13.05]画面 渐渐 浅浅 平静后无痕
+                    [02:17.02]我牵起微风思念却比黄花瘦
+                    [02:21.00]孤单地等候古道边的马念旧
+                    [02:24.59]月下的身影倒映在这湖心中
+                    [02:28.26]沉默 落寞 许久 它悄悄把泪流
+                    [02:35.51]我撑起了细雨思念在伞下一路跟
+                    [02:39.55]前面的书生你能不能等一等
+                    [02:43.36]坠落的涟漪一圈一圈却无声
+                    [02:47.36]画面 渐渐 浅浅 平静后无痕
+                    [02:50.75]我牵起微风思念却比黄花瘦
+                    [02:54.45]孤单地等候古道边的马念旧
+                    [02:58.00]月下的身影倒映在这湖心中
+                    [03:01.76]沉默 落寞 许久 它悄悄把泪流
+                    </textarea>
+
+                <textarea id="gec4" cols="30" style="display: none">
+                    [00:00.00]可能否 - 木小雅
+                    [00:00.06]词 Lyrics：至遥/祝何
+                    [00:00.12]曲 Music：祝何
+                    [00:18.54]春天的风 能否吹来夏天的雨
+                    [00:26.11]秋天的月 能否照亮冬天的雪
+                    [00:34.40]夜空的星 能否落向晨曦的海
+                    [00:42.35]山间的泉 能否遇上南飞的雁
+                    [00:50.52]能否早一点 看透命运的伏线
+                    [00:54.78]能否不轻易就深陷
+                    [00:58.13]能否慢一点 挥霍有限的时间
+                    [01:02.08]能否许我一个永远
+                    [01:08.01]可能我撞了南墙才会回头吧
+                    [01:12.38]可能我见了黄河才会死心吧
+                    [01:16.24]可能我偏要一条路走到黑吧
+                    [01:20.57]可能我还没遇见 那个他吧
+                    [01:45.73]断掉的弦 能否扯破自缚的茧
+                    [01:52.74]熄灭的火 能否烧光残留的念
+                    [02:01.25]梦中的云 能否化作熟悉的脸
+                    [02:08.66]前世的劫 能否换来今生的缘
+                    [02:16.98]能否早一点 相信年少的誓言
+                    [02:20.73]能否不轻易说再见
+                    [02:24.74]能否慢一点 感受岁月的缱绻
+                    [02:29.04]能否许我一次成全
+                    [02:34.67]可能我撞了南墙才会回头吧
+                    [02:39.02]可能我见了黄河才会死心吧
+                    [02:42.90]可能我偏要一条路走到黑吧
+                    [02:47.04]可能我还没遇见 那个他吧
+                    [02:55.04]可能我撞了南墙才会回头吧
+                    [02:59.13]可能我见了黄河才会死心吧
+                    [03:03.17]可能我偏要一条路走到黑吧
+                    [03:07.27]可能我还没遇见 那个他吧
+                    [03:15.38]可能我还没忘掉 那个他吧
+                    </textarea>
+
+                <textarea id="gec5" cols="30" style="display: none">
+                        [00:00.00]梦与星海之间 - 司南
+                        [00:00.06]词 Lyrics：至遥/祝何
+                        [00:00.12]曲 Music：祝何
+                        [00:18.053]蔚蓝深海映月影茫茫
+                        [00:21.812]心绪漂浮海上
+                        [00:25.070]渺小浮舟寻一束微光
+                        [00:28.827]梦停留的地方
+                        [00:32.334]行星遥遥相望
+                        [00:36.093]微弱却努力绽放
+                        [00:39.852]宇宙浩瀚苍凉
+                        [00:43.107]随潮汐孤独生长
+                        [00:46.865]你听银铃歌唱
+                        [00:50.619]牵我的手奔向远方
+                        [00:53.880]朝流星落下的方向
+                        [00:57.637]在手中紧握的信仰
+                        [01:01.393]翻过山川和海洋
+                        [01:05.152]只为在梦想身旁
+                        [01:08.914]灵魂不再游荡
+                        [01:12.922]坚定的目光
+                        [01:30.704]某年某天浮舟云朵上
+                        [01:34.464]天际洒落微光
+                        [01:37.719]波光聚散眼中的惆怅
+                        [01:41.728]湖中低浅吟唱
+                        [01:45.235]行星遥遥相望
+                        [01:48.742]微弱却努力绽放
+                        [01:52.249]宇宙浩瀚苍凉
+                        [01:56.007]随潮汐孤独生长
+                        [01:59.764]你听银铃歌唱
+                        [02:03.019]牵我的手奔向远方
+                        [02:06.776]朝流星落下的方向
+                        [02:10.285]在手中紧握的信仰
+                        [02:14.293]翻过山川和海洋
+                        [02:17.801]只为在梦想身旁
+                        [02:21.559]灵魂不再游荡
+                        [02:25.567]坚定的目光
+                        [02:32.583]在坠入深渊的时候
+                        [02:36.340]抬头仰望
+                        [02:40.096]仰望寻觅温暖目光
+                        [02:43.351]残风迎浪
+                        [02:47.358]眼底星河荡漾
+                        [02:50.614]踏着梦 走过时光
+                        [02:54.119]仰望是你站的方向
+                        [02:57.628]俯视是含泪的过往
+                        [03:01.135]一腔热血掀起波浪
+                        [03:05.140]逆着风乘舟远航
+                        [03:08.900]平静的灯塔上
+                        [03:12.910]安宁的故乡
+            </textarea>
+
+                <textarea id="gec6" cols="30" style="display: none">
+                [00:00.00]千千万万 - 深海鱼子酱
+                [00:00.06]词 Lyrics：至遥/祝何
+                [00:00.12]曲 Music：祝何
+                [00:01.13]这是千千万万万万千千个日夜
+                [00:05.70]是我对你说不尽的思念
+                [00:09.59]你的温柔予我无限的眷恋
+                [00:13.55]哪怕岁月容颜已经改变
+                [00:16.97]我有千千万万万万千千个心愿
+                [00:21.48]穿越人海为见你一面
+                [00:25.51]时间纷繁于我惊不起了波澜
+                [00:29.54]你的存在才是一切美好 使然
+                [00:37.81]在恍恍惚惚之间
+                [00:39.97]度过一年又一年
+                [00:41.93]春去秋来多少遍
+                [00:45.49]枫叶飘落了几片
+                [00:49.50]潺潺流水也无言
+                [00:53.90]我相信古老信念
+                [00:55.88]也相信情比金坚
+                [00:57.89]爱绝不是一场谣言
+                [01:01.48]书中曾有的故事
+                [01:05.45]真心会得到成全
+                [01:09.52]提取梦里的碎片
+                [01:13.51]温习着两人的画面
+                [01:17.53]轻轻靠近你又一点点
+                [01:21.44]立刻就消失不见
+                [01:24.91]这是千千万万万万千千个日夜
+                [01:29.39]是我对你说不尽的思念
+                [01:33.35]你的温柔予我无限的眷恋
+                [01:37.45]哪怕岁月容颜已经改变
+                [01:40.82]我有千千万万万万千千个心愿
+                [01:45.29]穿越人海为见你一面
+                [01:49.44]时间纷繁于我惊不起了波澜
+                [01:53.44]你的存在才是一切美好 使然
+                [02:13.56]提取梦里的碎片
+                [02:17.48]温习着两人的画面
+                [02:21.47]轻轻靠近你又一点点
+                [02:25.46]立刻就消失不见
+                [02:28.93]这是千千万万万万千千个日夜
+                [02:33.43]是我对你说不尽的思念
+                [02:37.39]你的温柔予我无限的眷恋
+                [02:41.43]哪怕岁月容颜已经改变
+                [02:44.79]我有千千万万万万千千个心愿
+                [02:49.39]穿越人海为见你一面
+                [02:53.42]时间纷繁于我惊不起了波澜
+                [02:57.42]你的存在才是一切美好
+                [03:02.06]千千万万的日夜
+                [03:05.88]是不尽的思念
+                [03:09.45]你的温柔予我无限眷恋
+                [03:13.45]哪怕岁月容颜已经改变
+                [03:16.99]我有千千万万万万千千个心愿
+                [03:21.35]穿越人海为见你一面
+                [03:25.50]时间纷繁于我惊不起了波澜
+                [03:29.45]你的存在才是一切美好 使然
+            </textarea>
+
+            </div>
+            <div id="juli">
+                <div id="name">目及皆是你</div>
+                <br>
+                <br>
+                <audio id="audio" src="../assets/目及皆是你.mp3" controls autoplay="true"></audio>
+
+                <br />
+                <div id="btn">
+                    <button id="btn3">上一首</button>
+                    <button id="btn1">暂停</button>
+                    <button id="btn4">下一首</button>
+                </div>
+            </div>
+            <hr width="500px" color=#987cb9 size=3>
+        </div>
+
+    </div>
+    <script>
+        function getinput() {
+            var audio = document.getElementById("audio");
+            var name = document.getElementById("name");
+            var res = document.getElementById('testinput').value;
+            audio.src = "../assets/" + res + ".mp3";
+            xuangel.innerHTML = res;
+            name.innerHTML = res;
+            audio.play();
+            document.getElementById("pic").src = "../assets/" + res + ".jpg"
+            if (res == "目及皆是你") {
+                num = 0;
+            }
+            else if (res == "大鱼") {
+                num = 1;
+            } else if (res == "念无痕") {
+                num = 2;
+            } else if (res == "可能否") {
+                num = 3;
+            } else if (res == "梦与星海之间") {
+                num = 4;
+            } else if (res == "千千万万") {
+                num = 5;
+            }
+            else {
+                num = 0
+            }
+            var geci = new Array;
+            geci = ["gec1", "gec2", "gec3", "gec4", "gec5", "gec6"];
+            var y = geci[num];
+            document.getElementById('testinput').value = "";
+            var lrc = document.getElementById(y).innerHTML;
+            var oLRC = {
+                ti: "",
+                ar: "",
+                al: "",
+                by: "",
+                offset: 0,
+                ms: []
+            };
+            function createLrcObj(lrc) {
+                if (lrc.length == 0) return;
+                var lrcs = lrc.split('\n');
+                for (var i in lrcs) {
+                    lrcs[i] = lrcs[i].replace(/(^\s*)|(\s*$)/g, "");
+                    var t = lrcs[i].substring(lrcs[i].indexOf("[") + 1, lrcs[i].indexOf("]"));//取[]间的内容
+                    var s = t.split(":");
+                    if (isNaN(parseInt(s[0]))) {
+                        for (var i in oLRC) {
+                            if (i != "ms" && i == s[0].toLowerCase()) {
+                                oLRC[i] = s[1];
+                            }
+                        }
+                    } else {
+                        var arr = lrcs[i].match(/\[(\d+:.+?)\]/g);
+                        var start = 0;
+                        for (var k in arr) {
+                            start += arr[k].length;
+                        }
+                        var content = lrcs[i].substring(start);
+                        for (var k in arr) {
+                            var t = arr[k].substring(1, arr[k].length - 1);
+                            var s = t.split(":");
+                            oLRC.ms.push({
+                                t: (parseFloat(s[0]) * 60 + parseFloat(s[1])).toFixed(3),
+                                c: content
+                            });
+                        }
+                    }
+                }
+                oLRC.ms.sort(function (a, b) {
+                    return a.t - b.t;
+                });
+            }
+            function showLRC() {
+                var s = "";
+                for (var i in oLRC.ms) {
+                    s += '<li>' + oLRC.ms[i].c + '</li>';
+                }
+                document.getElementById("lyric").innerHTML = s;
+            }
+            var lineNo = 0,
+                C_pos = 6,
+                offset = -20,
+                audio = document.getElementById("audio");
+            var li = document.getElementById("lyric");
+            function lineHigh() {
+                var lis = li.getElementsByTagName("li");
+                if (lineNo > 0) {
+                    lis[lineNo - 1].removeAttribute("class");
+                }
+                lis[lineNo].className = "lineHigh";
+
+                if (lineNo > C_pos) {
+                    li.style.transform = "translateY(" + (lineNo - C_pos) * offset * 2 + "px)"; //整体向上滚动一行高度
+                }
+            }
+
+            audio.ontimeupdate = function () {
+                if (lineNo == oLRC.ms.length)
+                    return;
+                var curTime = audio.currentTime;
+                if (parseFloat(oLRC.ms[lineNo].t) <= curTime) {
+                    lineHigh();
+                    lineNo++;
+                }
+            };
+            function goback() {
+                li.style.transform = "translateY(0)";
+                lineNo = 0;
+            }
+            function fanhui() {
+                var lis = li.getElementsByTagName("li");
+                if (lineNo > 0) {
+                    lis[lineNo - 1].removeAttribute("class");
+                }
+                lis[lineNo].className = "lineHigh";
+                lis[lineNo].removeAttribute("class");
+            }
+            audio.addEventListener(
+                "play",
+                function () {
+                    fanhui();
+                    goback();
+                },
+                false
+            );
+            createLrcObj(lrc);
+            showLRC();
+        }
+
+
+
+
+
+
+
+
+
+        var xuangel = document.querySelector('.xuange');
+        var ul = document.querySelector('.xg-ul');
+        var lil = ul.getElementsByTagName('li');
+
+        xuangel.onclick = function () {
+            ul.style.display = 'block';
+        }
+        ul.onclick = function () {
+            ul.style.display = 'none';
+        }
+        for (var i = 0; i < lil.length; i++) {
+
+            // 下标
+            lil[i].index = i;
+            lil[i].onclick = function () {
+
+                switch (this.index) {
+                    case 0:
+                        var audio = document.getElementById("audio");
+                        var name = document.getElementById("name");
+                        xuangel.innerHTML = '目及皆是你';
+                        num = 0;
+                        audio.src = "../assets/" + music[num] + ".mp3";
+                        name.innerHTML = music[num];
+                        document.getElementById("pic").src = picArr[0]
+                        audio.play();
+                        break;
+                    case 1:
+                        var audio = document.getElementById("audio");
+                        var name = document.getElementById("name");
+                        xuangel.innerHTML = '大鱼';
+                        num = 1;
+                        audio.src = "../assets/" + music[num] + ".mp3";
+                        name.innerHTML = music[num];
+                        document.getElementById("pic").src = picArr[1]
+                        audio.play();
+                        break;
+                    case 2:
+                        var audio = document.getElementById("audio");
+                        var name = document.getElementById("name");
+                        xuangel.innerHTML = '念无痕';
+                        num = 2;
+                        audio.src = "../assets/" + music[num] + ".mp3";
+                        name.innerHTML = music[num];
+                        document.getElementById("pic").src = picArr[2]
+                        audio.play();
+                        break;
+                    case 3:
+                        var audio = document.getElementById("audio");
+                        var name = document.getElementById("name");
+                        xuangel.innerHTML = '可能否';
+                        num = 3;
+                        audio.src = "../assets/" + music[num] + ".mp3";
+                        name.innerHTML = music[num];
+                        audio.play();
+                        document.getElementById("pic").src = picArr[3]
+                        break;
+                    case 4:
+                        var audio = document.getElementById("audio");
+                        var name = document.getElementById("name");
+                        xuangel.innerHTML = '梦与星海之间';
+                        num = 4;
+                        audio.src = "../assets/" + music[num] + ".mp3";
+                        name.innerHTML = music[num];
+                        document.getElementById("pic").src = picArr[4]
+                        audio.play();
+                        break;
+                    case 5:
+                        var audio = document.getElementById("audio");
+                        var name = document.getElementById("name");
+                        xuangel.innerHTML = '千千万万';
+                        num = 5;
+                        audio.src = "../assets/" + music[num] + ".mp3";
+                        name.innerHTML = music[num];
+                        document.getElementById("pic").src = picArr[5]
+                        audio.play();
+                        break;
+                    default:
+                        xuangel.innerHTML = '已取消';
+                        break;
+                        break;
+                }
+                var idd = document.getElementById("pic");
+                idd.style.animation = "display";
+                setInterval(
+                    function () {
+                        var idd = document.getElementById("pic");
+                        if (idd.style.animationPlayState != "paused") {
+                            idd.style.animation = "rotation 60s linear infinite";
+                        }
+                    }, 1000
+                )
+                document.getElementById("pic").src = picArr[num]
+                var geci = new Array;
+                geci = ["gec1", "gec2", "gec3", "gec4", "gec5", "gec6"];
+                var y = geci[num]
+                var lrc = document.getElementById(y).innerHTML;
+                var oLRC = {
+                    ti: "",
+                    ar: "",
+                    al: "",
+                    by: "",
+                    offset: 0,
+                    ms: []
+                };
+                function createLrcObj(lrc) {
+                    if (lrc.length == 0) return;
+                    var lrcs = lrc.split('\n');
+                    for (var i in lrcs) {
+                        lrcs[i] = lrcs[i].replace(/(^\s*)|(\s*$)/g, "");
+                        var t = lrcs[i].substring(lrcs[i].indexOf("[") + 1, lrcs[i].indexOf("]"));//取[]间的内容
+                        var s = t.split(":");
+                        if (isNaN(parseInt(s[0]))) {
+                            for (var i in oLRC) {
+                                if (i != "ms" && i == s[0].toLowerCase()) {
+                                    oLRC[i] = s[1];
+                                }
+                            }
+                        } else {
+                            var arr = lrcs[i].match(/\[(\d+:.+?)\]/g);
+                            var start = 0;
+                            for (var k in arr) {
+                                start += arr[k].length;
+                            }
+                            var content = lrcs[i].substring(start);
+                            for (var k in arr) {
+                                var t = arr[k].substring(1, arr[k].length - 1);
+                                var s = t.split(":");
+                                oLRC.ms.push({
+                                    t: (parseFloat(s[0]) * 60 + parseFloat(s[1])).toFixed(3),
+                                    c: content
+                                });
+                            }
+                        }
+                    }
+                    oLRC.ms.sort(function (a, b) {
+                        return a.t - b.t;
+                    });
+                }
+                function showLRC() {
+                    var s = "";
+                    for (var i in oLRC.ms) {
+                        s += '<li>' + oLRC.ms[i].c + '</li>';
+                    }
+                    document.getElementById("lyric").innerHTML = s;
+                }
+                var lineNo = 0,
+                    C_pos = 6,
+                    offset = -20,
+                    audio = document.getElementById("audio");
+                var li = document.getElementById("lyric");
+                function lineHigh() {
+                    var lis = li.getElementsByTagName("li");
+                    if (lineNo > 0) {
+                        lis[lineNo - 1].removeAttribute("class");
+                    }
+                    lis[lineNo].className = "lineHigh";
+
+                    if (lineNo > C_pos) {
+                        li.style.transform = "translateY(" + (lineNo - C_pos) * offset * 2 + "px)"; //整体向上滚动一行高度
+                    }
+                }
+
+                audio.ontimeupdate = function () {
+                    if (lineNo == oLRC.ms.length)
+                        return;
+                    var curTime = audio.currentTime;
+                    if (parseFloat(oLRC.ms[lineNo].t) <= curTime) {
+                        lineHigh();
+                        lineNo++;
+                    }
+                };
+                function goback() {
+                    li.style.transform = "translateY(0)";
+                    lineNo = 0;
+                }
+                function fanhui() {
+                    var lis = li.getElementsByTagName("li");
+                    if (lineNo > 0) {
+                        lis[lineNo - 1].removeAttribute("class");
+                    }
+                    lis[lineNo].className = "lineHigh";
+                    lis[lineNo].removeAttribute("class");
+                }
+                audio.addEventListener(
+                    "play",
+                    function () {
+                        fanhui();
+                        goback();
+                    },
+                    false
+                );
+                createLrcObj(lrc);
+                showLRC();
+            }
+        }
+
+
+        var picArr = new Array(
+            "../assets/目及皆是你.jpg",
+            "../assets/大鱼.jpg",
+            "../assets/念无痕.jpg",
+            "../assets/可能否.jpg",
+            "../assets/梦与星海之间.jpg",
+            "../assets/千千万万.jpg",
+        );
+        var inde = 0;
+        // 播放
+        var audio = document.getElementById("audio");
+        btn1.onclick = function () {
+            var div = document.getElementById('btn1');
+            var idd = document.getElementById("pic");
+            var a = "播放"
+            var b = "暂停"
+            if (div.innerHTML == a) {
+                div.innerHTML = b;
+                idd.style.animationPlayState = "running";
+            }
+            else {
+                div.innerHTML = a;
+                idd.style.animationPlayState = "paused";
+            }
+
+            if (audio !== null) {
+                if (audio.paused) {
+                    audio.play();
+                } else {
+                    audio.pause();
+                }
+            }
+        }
+
+        var music = new Array();
+        music = [
+            "目及皆是你",
+            "大鱼",
+            "念无痕",
+            "可能否",
+            "梦与星海之间",
+            "千千万万"
+        ];
+        var x = music.length;
+        var num = 0;
+
+        btn3.onclick = function () {
+            var name = document.getElementById("name");
+            var audio = document.getElementById("audio");
+            num = (num + x - 1) % x;
+            audio.src = "../assets/" + music[num] + ".mp3";
+            name.innerHTML = music[num];
+            xuangel.innerHTML = music[num];
+            audio.play();
+            var idd = document.getElementById("pic");
+            idd.style.animation = "display";
+            setInterval(
+                function () {
+                    var idd = document.getElementById("pic");
+                    if (idd.style.animationPlayState != "paused") {
+                        idd.style.animation = "rotation 60s linear infinite";
+                    }
+                }, 1000
+            )
+            document.getElementById("pic").src = picArr[num]
+
+
+
+            var geci = new Array;
+            geci = ["gec1", "gec2", "gec3", "gec4", "gec5", "gec6"]
+            var y = geci[num]
+            var lrc = document.getElementById(y).innerHTML;
+            var oLRC = {
+                ti: "",
+                ar: "",
+                al: "",
+                by: "",
+                offset: 0,
+                ms: []
+            };
+
+            function createLrcObj(lrc) {
+                if (lrc.length == 0) return;
+                var lrcs = lrc.split('\n');
+                for (var i in lrcs) {
+                    lrcs[i] = lrcs[i].replace(/(^\s*)|(\s*$)/g, "");
+                    var t = lrcs[i].substring(lrcs[i].indexOf("[") + 1, lrcs[i].indexOf("]"));//取[]间的内容
+                    var s = t.split(":");
+                    if (isNaN(parseInt(s[0]))) {
+                        for (var i in oLRC) {
+                            if (i != "ms" && i == s[0].toLowerCase()) {
+                                oLRC[i] = s[1];
+                            }
+                        }
+                    } else {
+                        var arr = lrcs[i].match(/\[(\d+:.+?)\]/g);
+                        var start = 0;
+                        for (var k in arr) {
+                            start += arr[k].length;
+                        }
+                        var content = lrcs[i].substring(start);
+                        for (var k in arr) {
+                            var t = arr[k].substring(1, arr[k].length - 1);
+                            var s = t.split(":");
+                            oLRC.ms.push({
+                                t: (parseFloat(s[0]) * 60 + parseFloat(s[1])).toFixed(3),
+                                c: content
+                            });
+                        }
+                    }
+                }
+                oLRC.ms.sort(function (a, b) {
+                    return a.t - b.t;
+                });
+            }
+            createLrcObj(lrc);
+            function showLRC() {
+                var s = "";
+                for (var i in oLRC.ms) {
+                    s += '<li>' + oLRC.ms[i].c + '</li>';
+                }
+                document.getElementById("lyric").innerHTML = s;
+            }
+            showLRC();
+            var lineNo = 0,
+                C_pos = 6,
+                offset = -20,
+                audio = document.getElementById("audio");
+            var li = document.getElementById("lyric");
+            function lineHigh() {
+                var lis = li.getElementsByTagName("li");
+                if (lineNo > 0) {
+                    lis[lineNo - 1].removeAttribute("class");
+                }
+                lis[lineNo].className = "lineHigh";
+
+                if (lineNo > C_pos) {
+                    li.style.transform = "translateY(" + (lineNo - C_pos) * offset * 2 + "px)"; //整体向上滚动一行高度
+                }
+            }
+            function goback() {
+                li.style.transform = "translateY(0)";
+                lineNo = 0;
+            }
+            audio.ontimeupdate = function () {
+                if (lineNo == oLRC.ms.length)
+                    return;
+                var curTime = audio.currentTime;
+                if (parseFloat(oLRC.ms[lineNo].t) <= curTime) {
+                    lineHigh();
+                    lineNo++;
+                }
+            };
+            function fanhui() {
+                var lis = li.getElementsByTagName("li");
+                if (lineNo > 0) {
+                    lis[lineNo - 1].removeAttribute("class");
+                }
+                lis[lineNo].className = "lineHigh";
+                lis[lineNo].removeAttribute("class");
+            }
+            audio.addEventListener(
+                "play",
+                function () {
+                    fanhui();
+                    goback();
+                },
+                false
+            );
+        };
+
+
+        btn4.onclick = function () {
+            var name = document.getElementById("name");
+            var audio = document.getElementById("audio");
+            num = (num + x + 1) % x;
+            audio.src = "../assets/" + music[num] + ".mp3";
+            name.innerHTML = music[num];
+            xuangel.innerHTML = music[num];
+            audio.play();
+            var idd = document.getElementById("pic");
+            idd.style.animation = "disable";
+
+            setInterval(
+                function () {
+                    var idd = document.getElementById("pic");
+                    if (idd.style.animationPlayState != "paused") {
+                        idd.style.animation = "rotation 60s linear infinite";
+                    }
+                }, 1000
+            )
+            document.getElementById("pic").src = picArr[num]
+
+
+            var geci = new Array;
+            geci = ["gec1", "gec2", "gec3", "gec4", "gec5", "gec6"];
+            var y = geci[num]
+            var lrc = document.getElementById(y).innerHTML;
+            var oLRC = {
+                ti: "",
+                ar: "",
+                al: "",
+                by: "",
+                offset: 0,
+                ms: []
+            };
+
+            function createLrcObj(lrc) {
+                if (lrc.length == 0) return;
+                var lrcs = lrc.split('\n');
+                for (var i in lrcs) {
+                    lrcs[i] = lrcs[i].replace(/(^\s*)|(\s*$)/g, "");
+                    var t = lrcs[i].substring(lrcs[i].indexOf("[") + 1, lrcs[i].indexOf("]"));//取[]间的内容
+                    var s = t.split(":");
+                    if (isNaN(parseInt(s[0]))) {
+                        for (var i in oLRC) {
+                            if (i != "ms" && i == s[0].toLowerCase()) {
+                                oLRC[i] = s[1];
+                            }
+                        }
+                    } else {
+                        var arr = lrcs[i].match(/\[(\d+:.+?)\]/g);
+                        var start = 0;
+                        for (var k in arr) {
+                            start += arr[k].length;
+                        }
+                        var content = lrcs[i].substring(start);
+                        for (var k in arr) {
+                            var t = arr[k].substring(1, arr[k].length - 1);
+                            var s = t.split(":");
+                            oLRC.ms.push({
+                                t: (parseFloat(s[0]) * 60 + parseFloat(s[1])).toFixed(3),
+                                c: content
+                            });
+                        }
+                    }
+                }
+                oLRC.ms.sort(function (a, b) {
+                    return a.t - b.t;
+                });
+            }
+            createLrcObj(lrc);
+            function showLRC() {
+                var s = "";
+                for (var i in oLRC.ms) {
+                    s += '<li>' + oLRC.ms[i].c + '</li>';
+                }
+                document.getElementById("lyric").innerHTML = s;
+            }
+            showLRC();
+            var lineNo = 0,
+                C_pos = 6,
+                offset = -20,
+                audio = document.getElementById("audio");
+            var li = document.getElementById("lyric");
+            function lineHigh() {
+                var lis = li.getElementsByTagName("li");
+                if (lineNo > 0) {
+                    lis[lineNo - 1].removeAttribute("class");
+                }
+                lis[lineNo].className = "lineHigh";
+
+                if (lineNo > C_pos) {
+                    li.style.transform = "translateY(" + (lineNo - C_pos) * offset * 2 + "px)"; //整体向上滚动一行高度
+                }
+            }
+            function goback() {
+                li.style.transform = "translateY(0)";
+                lineNo = 0;
+            }
+            audio.ontimeupdate = function () {
+                if (lineNo == oLRC.ms.length)
+                    return;
+                var curTime = audio.currentTime;
+                if (parseFloat(oLRC.ms[lineNo].t) <= curTime) {
+                    lineHigh();
+                    lineNo++;
+                }
+            };
+            function fanhui() {
+                var lis = li.getElementsByTagName("li");
+                if (lineNo > 0) {
+                    lis[lineNo - 1].removeAttribute("class");
+                }
+                lis[lineNo].className = "lineHigh";
+                lis[lineNo].removeAttribute("class");
+            }
+            audio.addEventListener(
+                "play",
+                function () {
+                    fanhui();
+                    goback();
+                },
+                false
+            );
+        };
+
+
+        var lrc = document.getElementById("gec1").innerHTML;
+        var oLRC = {
+            ti: "",
+            ar: "",
+            al: "",
+            by: "",
+            offset: 0,
+            ms: []
+        };
+
+        function createLrcObj(lrc) {
+            if (lrc.length == 0) return;
+            var lrcs = lrc.split('\n');
+            for (var i in lrcs) {
+                lrcs[i] = lrcs[i].replace(/(^\s*)|(\s*$)/g, "");
+                var t = lrcs[i].substring(lrcs[i].indexOf("[") + 1, lrcs[i].indexOf("]"));//取[]间的内容
+                var s = t.split(":");
+                if (isNaN(parseInt(s[0]))) {
+                    for (var i in oLRC) {
+                        if (i != "ms" && i == s[0].toLowerCase()) {
+                            oLRC[i] = s[1];
+                        }
+                    }
+                } else {
+                    var arr = lrcs[i].match(/\[(\d+:.+?)\]/g);
+                    var start = 0;
+                    for (var k in arr) {
+                        start += arr[k].length;
+                    }
+                    var content = lrcs[i].substring(start);
+                    for (var k in arr) {
+                        var t = arr[k].substring(1, arr[k].length - 1);
+                        var s = t.split(":");
+                        oLRC.ms.push({
+                            t: (parseFloat(s[0]) * 60 + parseFloat(s[1])).toFixed(3),
+                            c: content
+                        });
+                    }
+                }
+            }
+            oLRC.ms.sort(function (a, b) {
+                return a.t - b.t;
+            });
+        }
+        createLrcObj(lrc);
+        function showLRC() {
+            var s = "";
+            for (var i in oLRC.ms) {
+                s += '<li>' + oLRC.ms[i].c + '</li>';
+            }
+            document.getElementById("lyric").innerHTML = s;
+        }
+        showLRC();
+        var lineNo = 0,
+            C_pos = 6,
+            offset = -20,
+            audio = document.getElementById("audio");
+        var li = document.getElementById("lyric");
+        function lineHigh() {
+            var lis = li.getElementsByTagName("li");
+            if (lineNo > 0) {
+                lis[lineNo - 1].removeAttribute("class");
+            }
+            lis[lineNo].className = "lineHigh";
+
+            if (lineNo > C_pos) {
+                li.style.transform = "translateY(" + (lineNo - C_pos) * offset * 2 + "px)"; //整体向上滚动一行高度
+            }
+        }
+        function goback() {
+            li.style.transform = "translateY(0)";
+            lineNo = 0;
+        }
+        audio.ontimeupdate = function () {
+            if (lineNo == oLRC.ms.length)
+                return;
+            var curTime = audio.currentTime;
+            if (parseFloat(oLRC.ms[lineNo].t) <= curTime) {
+                lineHigh();
+                lineNo++;
+            }
+        };
+        audio.onended = function () {
+            goback();
+        };
+        audio.addEventListener(
+            "ended",
+            function () {
+                btn4.onclick();
+            },
+            false
+        );
+        function fanhui() {
+            var lis = li.getElementsByTagName("li");
+            if (lineNo > 0) {
+                lis[lineNo - 1].removeAttribute("class");
+            }
+            lis[lineNo].className = "lineHigh";
+            lis[lineNo].removeAttribute("class");
+        }
+        audio.addEventListener(
+            "play",
+            function () {
+                fanhui();
+                goback();
+            },
+            false
+        );
+    </script>
+
+</body>
+
+</html>

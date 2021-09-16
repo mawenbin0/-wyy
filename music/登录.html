@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            z-index: 100;
+            width: 300px;
+            height: 450px;
+            border-style: solid;
+            border-color: black;
+            margin-left: 590px;
+            margin-top: 100px;
+        }
+
+        img {
+            width: 200px;
+            margin-top: 20px;
+            margin-left: 40px;
+
+        }
+
+        input {
+            margin-left: 15px;
+            width: 250px;
+            height: 25px;
+            border-style: solid;
+            border-color: blue;
+            color: gray;
+        }
+
+        button {
+            width: 60px;
+            height: 60px;
+            border-radius: 100%;
+            margin-left: 110px;
+            color: white;
+            background-color: rgb(80, 76, 76, 0.1);
+            border-style: solid;
+            border-color: white;
+            font-size: 40px;
+        }
+
+        button:hover {
+            background-color: deepskyblue;
+            border-style: solid;
+            border-color: white;
+        }
+
+        button:active {
+            background-color: blue;
+            border-style: solid;
+            border-color: white;
+        }
+
+        span {
+            margin-left: 21px;
+            color: rgb(202, 34, 34);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <img src="../assets/qq.jpg" alt="">
+        <br>
+        <input value="账号">
+        <br>
+        <br>
+        <input value="密码">
+        <br>
+        <br>
+        <a href="网抑云.html">
+            <button @click="deng">></button>
+        </a>
+        <br>
+        <br>
+        <a> <span>找回密码</span></a>
+        <a> <span>创建新号</span></a>
+        <a> <span>号码验证</span> </a>
+    </div>
+</body>
+
+</html>

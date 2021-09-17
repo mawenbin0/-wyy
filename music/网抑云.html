@@ -9,14 +9,7 @@
     <link rel="shortcut icon" href="#" />
     <style>
         body {
-            background: linear-gradient(90deg,
-                    rgba(247, 104, 69, 0.2),
-                    rgba(247, 164, 10, 0.2),
-                    rgba(240, 236, 9, 0.2),
-                    rgba(10, 247, 10, 0.2),
-                    rgba(14, 213, 248, 0.2),
-                    rgba(18, 22, 245, 0.2),
-                    rgba(231, 15, 203, 0.2));
+            background-image: url("../assets/d.jpg");
         }
 
         * {
@@ -24,12 +17,12 @@
             padding: 0;
         }
 
-        .contanier {
+        #contanier {
             width: 60%;
             height: 500px;
             margin: 100px auto;
-            border: 1px solid rgb(181, 136, 79);
-            background-color: rgb(236, 225, 209);
+            border: 2px solid rgb(181, 136, 79);
+            background-color: rgb(253, 210, 204);
             z-index: 10;
         }
 
@@ -58,8 +51,8 @@
         img {
             margin-left: 5%;
             border-radius: 100%;
-            border-style: outset;
-            border-width: 4px;
+            border-style: solid;
+            border-width: 5px;
             border-color: red;
             animation: rotation 60s linear infinite;
             -moz-animation: rotation3s linear infinite;
@@ -68,8 +61,13 @@
             animation-play-state: running;
         }
 
+        img:hover {
+            border-style: outset;
+        }
+
+
         #name {
-            color: deeppink;
+            color: rgb(134, 13, 13);
             float: left;
             margin-top: -220px;
             margin-left: 12px;
@@ -134,8 +132,8 @@
         }
 
         #lyric .lineHigh {
-            color: white;
-            background-color: deepskyblue;
+            color: blue;
+            /* background-color: deepskyblue; */
         }
 
         .xuange {
@@ -145,7 +143,8 @@
             position: absolute;
             left: 325px;
             text-align: center;
-            color: black;
+            background-color: rgb(253, 210, 204);
+            color: rgb(97, 5, 54);
             z-index: 50;
             top: 172px;
         }
@@ -160,7 +159,7 @@
             height: 450px;
             top: 200px;
             left: 310px;
-            background-color: rgb(236, 225, 209);
+            background-color: rgb(253, 210, 204);
             text-align: center;
             z-index: 50;
         }
@@ -169,7 +168,7 @@
             display: inline-block;
             width: 100%;
             margin: 1px;
-            font-size: 25px;
+            font-size: 28px;
             line-height: 30px;
             color: purple;
             margin-top: 30px;
@@ -182,16 +181,17 @@
 
         hr {
             transform: rotate(90deg);
-            height: 3px;
+            height: 2px;
             float: right;
-            margin-top: -248px;
-            margin-right: 210px;
+            margin-top: -250px;
+            margin-right: 209px;
             z-index: 100;
+            background-color: black;
         }
 
         #testinput {
             background-color: pink;
-            color: purple;
+            color: green;
             font-size: 25px;
             width: 365px;
             height: 40px;
@@ -202,16 +202,16 @@
             border: 3px;
             border-style: solid;
             border-color: red;
-            letter-spacing :3px; 
+            letter-spacing: 3px;
         }
-    
+
         #qued {
-            background-color: palevioletred;
-            color: black;
+            background-color: rgb(226, 55, 112);
+            color: purple;
             text-align: center;
             width: 88px;
             height: 46px;
-            font-size: 20px;
+            font-size: 25px;
             z-index: 100;
             float: left;
             margin-top: 100px;
@@ -219,7 +219,7 @@
             border-style: solid;
             border-color: red;
             margin-left: -1px;
-        
+
         }
     </style>
 
@@ -227,7 +227,7 @@
 
 <body>
     <div id="app">
-        <h2 id="title">网抑云音乐</h2>
+        <h2 id="title" onclick="bod()">网抑云音乐</h2>
         <input type="text" name="fname" id="testinput">
         <button onclick="getinput()" id="qued">确定</button>
         <div class="xuange">歌单列表</div>
@@ -241,15 +241,15 @@
                 <li>千千万万 </li>
             </ul>
         </div>
-        <div class="contanier">
+        <div id="contanier">
             <div class="left_top">
-                <img src="../assets/目及皆是你.mp3" width="200px" height="200px" id="pic">
+                <img src="../assets/目及皆是你.mp3" width="200px" height="200px" id="pic" onclick="xunhuan()">
             </div>
             <div class="lyric_area">
                 <li style="list-style-type:none;" id="lyric"></li>
 
                 <textarea id="gec1" cols="30" style="display: none">
-                    [00:00.00]目及皆是你 - 蓝心羽
+                    [00:00.00]目及皆是你 - 小蓝背心
                     [00:00.06]词 Lyrics：至遥/祝何
                     [00:00.12]曲 Music：祝何
                     [00:22.44]玻璃上的雾气 我临摹一个你
@@ -521,10 +521,10 @@
 
             </div>
             <div id="juli">
-                <div id="name">目及皆是你</div>
+                <div id="name" onclick="huanfu()">目及皆是你</div>
                 <br>
                 <br>
-                <audio id="audio" src="../assets/目及皆是你.mp3" controls autoplay="true"></audio>
+                <audio id="audio" src="../assets/目及皆是你.mp3" controls></audio>
 
                 <br />
                 <div id="btn">
@@ -582,7 +582,7 @@
                 var lrcs = lrc.split('\n');
                 for (var i in lrcs) {
                     lrcs[i] = lrcs[i].replace(/(^\s*)|(\s*$)/g, "");
-                    var t = lrcs[i].substring(lrcs[i].indexOf("[") + 1, lrcs[i].indexOf("]"));//取[]间的内容
+                    var t = lrcs[i].substring(lrcs[i].indexOf("[") + 1, lrcs[i].indexOf("]"));
                     var s = t.split(":");
                     if (isNaN(parseInt(s[0]))) {
                         for (var i in oLRC) {
@@ -631,7 +631,7 @@
                 lis[lineNo].className = "lineHigh";
 
                 if (lineNo > C_pos) {
-                    li.style.transform = "translateY(" + (lineNo - C_pos) * offset * 2 + "px)"; //整体向上滚动一行高度
+                    li.style.transform = "translateY(" + (lineNo - C_pos) * offset * 2 + "px)";
                 }
             }
 
@@ -667,12 +667,6 @@
             createLrcObj(lrc);
             showLRC();
         }
-
-
-
-
-
-
 
 
 
@@ -786,7 +780,7 @@
                     var lrcs = lrc.split('\n');
                     for (var i in lrcs) {
                         lrcs[i] = lrcs[i].replace(/(^\s*)|(\s*$)/g, "");
-                        var t = lrcs[i].substring(lrcs[i].indexOf("[") + 1, lrcs[i].indexOf("]"));//取[]间的内容
+                        var t = lrcs[i].substring(lrcs[i].indexOf("[") + 1, lrcs[i].indexOf("]"));
                         var s = t.split(":");
                         if (isNaN(parseInt(s[0]))) {
                             for (var i in oLRC) {
@@ -835,7 +829,7 @@
                     lis[lineNo].className = "lineHigh";
 
                     if (lineNo > C_pos) {
-                        li.style.transform = "translateY(" + (lineNo - C_pos) * offset * 2 + "px)"; //整体向上滚动一行高度
+                        li.style.transform = "translateY(" + (lineNo - C_pos) * offset * 2 + "px)";
                     }
                 }
 
@@ -885,6 +879,18 @@
         var inde = 0;
         // 播放
         var audio = document.getElementById("audio");
+
+        var music = new Array();
+        music = [
+            "目及皆是你",
+            "大鱼",
+            "念无痕",
+            "可能否",
+            "梦与星海之间",
+            "千千万万"
+        ];
+        var x = music.length;
+        var num = 0;
         btn1.onclick = function () {
             var div = document.getElementById('btn1');
             var idd = document.getElementById("pic");
@@ -908,17 +914,6 @@
             }
         }
 
-        var music = new Array();
-        music = [
-            "目及皆是你",
-            "大鱼",
-            "念无痕",
-            "可能否",
-            "梦与星海之间",
-            "千千万万"
-        ];
-        var x = music.length;
-        var num = 0;
 
         btn3.onclick = function () {
             var name = document.getElementById("name");
@@ -960,7 +955,7 @@
                 var lrcs = lrc.split('\n');
                 for (var i in lrcs) {
                     lrcs[i] = lrcs[i].replace(/(^\s*)|(\s*$)/g, "");
-                    var t = lrcs[i].substring(lrcs[i].indexOf("[") + 1, lrcs[i].indexOf("]"));//取[]间的内容
+                    var t = lrcs[i].substring(lrcs[i].indexOf("[") + 1, lrcs[i].indexOf("]"));
                     var s = t.split(":");
                     if (isNaN(parseInt(s[0]))) {
                         for (var i in oLRC) {
@@ -1011,7 +1006,7 @@
                 lis[lineNo].className = "lineHigh";
 
                 if (lineNo > C_pos) {
-                    li.style.transform = "translateY(" + (lineNo - C_pos) * offset * 2 + "px)"; //整体向上滚动一行高度
+                    li.style.transform = "translateY(" + (lineNo - C_pos) * offset * 2 + "px)";
                 }
             }
             function goback() {
@@ -1086,7 +1081,7 @@
                 var lrcs = lrc.split('\n');
                 for (var i in lrcs) {
                     lrcs[i] = lrcs[i].replace(/(^\s*)|(\s*$)/g, "");
-                    var t = lrcs[i].substring(lrcs[i].indexOf("[") + 1, lrcs[i].indexOf("]"));//取[]间的内容
+                    var t = lrcs[i].substring(lrcs[i].indexOf("[") + 1, lrcs[i].indexOf("]"));
                     var s = t.split(":");
                     if (isNaN(parseInt(s[0]))) {
                         for (var i in oLRC) {
@@ -1137,7 +1132,7 @@
                 lis[lineNo].className = "lineHigh";
 
                 if (lineNo > C_pos) {
-                    li.style.transform = "translateY(" + (lineNo - C_pos) * offset * 2 + "px)"; //整体向上滚动一行高度
+                    li.style.transform = "translateY(" + (lineNo - C_pos) * offset * 2 + "px)";
                 }
             }
             function goback() {
@@ -1187,7 +1182,7 @@
             var lrcs = lrc.split('\n');
             for (var i in lrcs) {
                 lrcs[i] = lrcs[i].replace(/(^\s*)|(\s*$)/g, "");
-                var t = lrcs[i].substring(lrcs[i].indexOf("[") + 1, lrcs[i].indexOf("]"));//取[]间的内容
+                var t = lrcs[i].substring(lrcs[i].indexOf("[") + 1, lrcs[i].indexOf("]"));
                 var s = t.split(":");
                 if (isNaN(parseInt(s[0]))) {
                     for (var i in oLRC) {
@@ -1238,7 +1233,7 @@
             lis[lineNo].className = "lineHigh";
 
             if (lineNo > C_pos) {
-                li.style.transform = "translateY(" + (lineNo - C_pos) * offset * 2 + "px)"; //整体向上滚动一行高度
+                li.style.transform = "translateY(" + (lineNo - C_pos) * offset * 2 + "px)";
             }
         }
         function goback() {
@@ -1257,10 +1252,32 @@
         audio.onended = function () {
             goback();
         };
+        bofangsunxu = 0;
+        function xunhuan() {
+            if (bofangsunxu == 0) {
+                bofangsunxu = 1;
+                document.getElementById("pic").style = "border-color:blue";
+            } else if (bofangsunxu == 1) {
+                bofangsunxu = 2;
+                document.getElementById("pic").style = "border-color:green";
+            } else {
+                bofangsunxu = 0;
+                document.getElementById("pic").style = "border-color:red";
+            }
+        }
         audio.addEventListener(
             "ended",
             function () {
-                btn4.onclick();
+                if (bofangsunxu == 0) {
+                    btn4.onclick();
+                } else if (bofangsunxu == 1) {
+                    btn3.onclick();
+                    btn4.onclick();
+                } else {
+                    btn3.onclick();
+                    btn3.onclick();
+                }
+
             },
             false
         );
@@ -1280,6 +1297,50 @@
             },
             false
         );
+        fengmian = 0;
+        function bod() {
+            if (fengmian == 0) {
+                fengmian = 1;
+                document.body.style = "background-image: url( '../assets/tutu.jpg')";
+                document.getElementById("title").style = "color:purple";
+            }
+            else if (fengmian == 1) {
+                fengmian = 2;
+                document.getElementById("title").style = "color:black";
+                document.body.style =
+                    "background: linear-gradient(90deg,rgba(247, 104, 69, 0.2),rgba(247, 164, 10, 0.2)," +
+                    "rgba(240, 236, 9, 0.2),rgba(10, 247, 10, 0.2),rgba(14, 213, 248, 0.2),rgba(18, 22, 245, 0.2),rgba(231, 15, 203, 0.2))";
+            }
+            else {
+                fengmian = 0;
+                document.body.style = "background-image: url('../assets/d.jpg')";
+                document.getElementById("title").style = "color:deeppink";
+
+            }
+        }
+        feng = 0;
+        function huanfu() {
+            if (feng == 0) {
+                feng = 1;
+                document.getElementById("pic").src = "../assets/pifu0.png";
+            }
+            else if (feng == 1) {
+                feng = 2;
+                document.getElementById("pic").src = "../assets/pifu1.png";
+            }
+            else if (feng == 2) {
+                feng = 3;
+                document.getElementById("pic").src = "../assets/pifu2.png";
+            }
+            else if (feng == 3) {
+                feng = 4;
+                document.getElementById("pic").src = "../assets/pifu3.png";
+            }
+            else {
+                feng = 0;
+                document.getElementById("pic").src = picArr[num];
+            }
+        }
     </script>
 
 </body>
